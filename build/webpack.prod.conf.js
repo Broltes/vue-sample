@@ -26,6 +26,7 @@ module.exports = {
   },
 
   resolve: config.resolve,
+  resolveLoader: config.resolveLoader,
 
   plugins: [
     new ExtractTextPlugin('[name].css?[contenthash]'),

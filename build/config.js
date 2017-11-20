@@ -17,12 +17,15 @@ var config = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     // Limit the module searching
-    modules: [path.resolve('node_modules'), rootModulesPath],
+    modules: [path.resolve('node_modules')],
     alias: {
       // vue pre-compile
       'vue$': 'vue/dist/vue.esm.js',
       '@': path.resolve('src')
     }
+  },
+  resolveLoader: {
+    modules: [path.resolve('node_modules'), rootModulesPath]
   },
   sassLoaderOptions: {
     data: '@import "~@/assets/scss/variables";'

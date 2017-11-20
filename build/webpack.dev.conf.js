@@ -19,6 +19,7 @@ module.exports = {
   },
 
   resolve: config.resolve,
+  resolveLoader: config.resolveLoader,
 
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),

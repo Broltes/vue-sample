@@ -41,7 +41,7 @@ var config = {
   outputPath: path.resolve(dist)
 }
 
-module.exports = function(ENV) {
+module.exports = function (ENV) {
   if (ENV === 'development') {
     Object.assign(config, {
       entry: config.entry.app,

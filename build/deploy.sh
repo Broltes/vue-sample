@@ -1,11 +1,5 @@
 set -e
-DIST=$(node -p -e "require('./package.json').DIST")
-
-# clean
-rm -rf $DIST
-
-# build
-DIST=$DIST npm run build
+DIST=$(node -p -e "require('./package.json').config.dist")
 
 # commit
 echo "Enter deploy message: "

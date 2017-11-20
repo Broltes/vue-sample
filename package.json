@@ -1,7 +1,10 @@
 {
   "name": "vue-sample",
   "version": "0.0.0",
-  "DIST": "dist",
+  "config": {
+    "devPort": 3000,
+    "dist": "dist"
+  },
   "scripts": {
     "dev": "webpack-dev-server --hot --progress --open --config build/webpack.dev.conf.js",
     "build": "webpack -p --progress --config build/webpack.prod.conf.js",

@@ -1,13 +1,13 @@
 # vue-sample
 
-## Config
-- Rename the project `name` in `package.json`
-- Rename the Home Page `title` in `/build/config.js`
-- The default development port is `3000`, defined in `/build/config.js`
-- The default output path is `/dist`, defined in `package.json` by `DIST`
+## Usage
 
-## Development
+This is a project template for [vue-cli](https://github.com/vuejs/vue-cli).
+
 ``` bash
-npm install image-webpack-loader -g
-yarn install
+$ npm install -g vue-cli
+$ vue init broltes:vue-sample my-project
+$ cd my-project
+$ npm install
+$ npm run dev
 ```

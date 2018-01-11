@@ -28,7 +28,7 @@ var config = {
     modules: [path.resolve('node_modules'), rootModulesPath]
   },
   sassLoaderOptions: {
-    data: '@import "~@/assets/scss/variables";'
+    data: '@import "~@/style/variables";'
   },
   plugins: [
     new HtmlWebpackPlugin({

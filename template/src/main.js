@@ -3,7 +3,7 @@ import Vue from 'vue'
 import App from './App'
 
 import './app/filters'
-import './assets/scss/index.scss'
+import './style/index.scss'
 import './assets/svg'
 
 /* eslint-disable no-new */

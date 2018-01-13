@@ -1,18 +1,19 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var path = require('path')
-var { execSync } = require('child_process')
-var { dist, devPort } = require('../package.json').config
-var rootModulesPath = execSync('npm root -g').toString().trim()
-var title = 'Vue Sample'
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const { execSync } = require('child_process');
+const { dist } = require('../package.json').config;
 
-var config = {
+const rootModulesPath = execSync('npm root -g').toString().trim();
+const title = 'Vue Sample';
+
+module.exports = {
   entry: {
     app: [
-      './src/main'
+      './src/main',
     ],
     vendor: [
-      'vue'
-    ]
+      'vue',
+    ],
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -20,34 +21,23 @@ var config = {
     modules: [path.resolve('node_modules')],
     alias: {
       // vue pre-compile
-      'vue$': 'vue/dist/vue.esm.js',
-      '@': path.resolve('src')
-    }
+      vue$: 'vue/dist/vue.esm.js',
+      '@': path.resolve('src'),
+    },
   },
   resolveLoader: {
-    modules: [path.resolve('node_modules'), rootModulesPath]
+    modules: [path.resolve('node_modules'), rootModulesPath],
   },
   sassLoaderOptions: {
-    data: '@import "~@/style/variables";'
+    data: '@import "~@/style/variables";',
   },
   plugins: [
     new HtmlWebpackPlugin({
       title,
       filename: 'index.html',
       template: 'build/index.ejs',
-      inject: true
-    })
+      inject: true,
+    }),
   ],
-  outputPath: path.resolve(dist)
-}
-
-module.exports = function (ENV) {
-  if (ENV === 'development') {
-    Object.assign(config, {
-      entry: config.entry.app,
-      port: devPort
-    })
-  }
-
-  return config
-}
+  outputPath: path.resolve(dist),
+};

@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Vue from 'vue';
 
-let filters = {
-}
+const filters = {
+};
 
-Object.keys(filters).forEach(key => Vue.filter(key, filters[key]))
+Object.keys(filters).forEach(key => Vue.filter(key, filters[key]));
 
-export default filters
+export default filters;

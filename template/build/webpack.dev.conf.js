@@ -1,21 +1,22 @@
-var config = require('./config')('development')
-var webpack = require('webpack')
+const webpack = require('webpack');
+const config = require('./config');
+const { devPort } = require('../package.json').config;
 
-var scssLoaders = [
+const scssLoaders = [
   'vue-style-loader',
   'css-loader',
   'postcss-loader',
   {
     loader: 'sass-loader',
-    options: config.sassLoaderOptions
-  }
-]
+    options: config.sassLoaderOptions,
+  },
+];
 
 module.exports = {
-  entry: config.entry,
+  entry: config.entry.app,
 
   output: {
-    filename: '[name].js' // for multi chunks
+    filename: '[name].js', // for multi chunks
   },
 
   resolve: config.resolve,
@@ -23,14 +24,14 @@ module.exports = {
 
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.NamedModulesPlugin()
+    new webpack.NamedModulesPlugin(),
   ].concat(config.plugins),
 
   devServer: {
     noInfo: true,
     host: '0.0.0.0',
-    port: config.port,
-    disableHostCheck: true
+    port: devPort,
+    disableHostCheck: true,
   },
   devtool: '#cheap-module-eval-source-map',
 
@@ -43,23 +44,23 @@ module.exports = {
           loaders: {
             css: [
               'vue-style-loader',
-              'css-loader'
+              'css-loader',
             ],
-            scss: scssLoaders
-          }
-        }
+            scss: scssLoaders,
+          },
+        },
       },
 
       {
         // scss
         test: /\.scss$/,
-        use: scssLoaders
+        use: scssLoaders,
       },
 
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
       },
 
       {
@@ -71,17 +72,17 @@ module.exports = {
             options: {
               plugins: [
                 { removeTitle: true },
-                { removeAttrs: { attrs: '(class|fill)' } }
-              ]
-            }
-          }
-        ]
+                { removeAttrs: { attrs: '(class|fill)' } },
+              ],
+            },
+          },
+        ],
       },
 
       {
         test: /\.(png|jpg)$/,
-        loader: 'file-loader'
-      }
-    ]
-  }
-}
+        loader: 'file-loader',
+      },
+    ],
+  },
+};
